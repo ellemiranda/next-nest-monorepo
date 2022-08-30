@@ -37,7 +37,7 @@ jobs:
         if: github.event_name == 'push'
         run: .github/common/preid-tag.sh
         env:
-          PREID: hotfix
+          PREID: rc
 
       - name: Update GitHub tags
         run: git push --tags 

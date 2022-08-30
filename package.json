@@ -1,0 +1,14 @@
+{
+  "name": "ess",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap --hoist --strict",
+    "bootstrap:dev": "npm run bootstrap && npm run build",
+    "build": "npx lerna build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.13",
+    "lerna": "^5.4.3",
+    "typescript": "^4.8.2"
+  }
+}

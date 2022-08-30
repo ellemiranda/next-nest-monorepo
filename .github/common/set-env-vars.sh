@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$PREID="latest"
+PREID="latest"
 
 if [ -z "$ROOT" ]; then
   ROOT="."
@@ -12,6 +12,7 @@ echo "AWS_REGION=us-east-1" >> $GITHUB_ENV
 
 if [ -f "lerna.json" ]; then
   echo "Lerna project detected"
+  TYPE='lerna'
 else
   echo "Unknow repository"
   exit 1
@@ -23,10 +24,10 @@ if [ -z $VERSION ]; then
     VERSION=$(npx semver "${GITHUB_REF#"refs/tags/v"}")
   elif [ "$TYPE" == 'lerna' ]; then
     echo "Getting version from lerna"
-    VERSION=$(jg -r .version lerna.json)
+    VERSION=$(jq -r .version lerna.json)
   elif [ -f "package.json" ]; then
     echo "Getting version from package.json"
-    VERSION=$(jg -r .version "$ROOT/package.json")
+    VERSION=$(jq -r .version "$ROOT/package.json")
   else
     echo "Failed to get version"
     exit 1

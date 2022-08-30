@@ -2,6 +2,11 @@ FROM node:16-alpine
 
 WORKDIR /srv/app
 
+RUN npm install npm@8.131.1
+RUN npm install pm2 -g
+RUN -rf /usr/local/lib/node_modules/npm
+RUN mv node_modules/npm /usr/local/lib/node_modules/npm
+
 COPY node_modules ./node_modules
 
 COPY packages/engine-api/package.json ./packages/engine-api/package.json

@@ -10,7 +10,7 @@ jobs:
     name: Define Jobs
     outputs: 
       docker: ${{ steps.docker.outputs.matrix }}
-     runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set Environment Variables

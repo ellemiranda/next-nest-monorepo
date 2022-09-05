@@ -1,5 +1,12 @@
+import { CountProvider } from '../contexts/count-context'
+import Counter from './components/counter/counter'
+
 function HomePage() {
-  return <div>Welcome to Next.js!</div>
+  return (
+    <CountProvider>
+      <Counter />
+    </CountProvider>
+  )
 }
 
 export default HomePage
